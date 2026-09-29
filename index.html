@@ -3,148 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Albion Market EU</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0d0f12;
+    color:#eee;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0d0f12;
-    color: #eeeeee;
+header{
+    text-align:center;
+    padding:30px 15px;
+    background:#171a1f;
+    border-bottom:1px solid #333;
 }
 
-header {
-    background: #0d0f12;
-    border-bottom: 1px solid #333;
-    text-align: center;
-    padding: 25px 15px;
+header h1{
+    margin:0;
+    font-size:34px;
+    color:#f5c542;
 }
 
-.logo-text {
-    margin: 0;
-    font-size: 32px;
-    font-weight: bold;
-    color: #ffffff;
+header p{
+    color:#aaa;
+    font-size:17px;
 }
 
-.subtitle {
-    margin-top: 8px;
-    color: #999;
-    font-size: 15px;
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:15px;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
+.card{
+    background:#171a1f;
+    border:1px solid #333;
+    border-radius:18px;
+    margin:15px 0;
+    overflow:hidden;
 }
 
-.card {
-    background: #17191e;
-    border: 1px solid #292c33;
-    border-radius: 18px;
-    margin-bottom: 20px;
-    overflow: hidden;
+.card-title{
+    padding:20px;
+    font-size:23px;
+    font-weight:bold;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.card-header {
-    padding: 20px;
-    font-size: 22px;
-    font-weight: bold;
-    border-bottom: 1px solid #30333a;
+.card-content{
+    padding:20px;
+    border-top:1px solid #333;
 }
 
-.card-body {
-    padding: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #aaa;
-    font-size: 16px;
+label{
+    display:block;
+    margin:14px 0 7px;
+    color:#bbb;
 }
 
 select,
-input {
-    width: 100%;
-    padding: 16px;
-    margin-bottom: 18px;
-    border-radius: 12px;
-    border: 1px solid #41444b;
-    background: #202329;
-    color: white;
-    font-size: 16px;
+input{
+    width:100%;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #444;
+    background:#22262c;
+    color:white;
+    font-size:16px;
 }
 
-select:focus,
-input:focus {
-    outline: none;
-    border-color: #777;
+button{
+    border:0;
+    border-radius:12px;
+    padding:13px 18px;
+    font-size:16px;
+    cursor:pointer;
 }
 
-.button {
-    width: 100%;
-    padding: 16px;
-    border: 0;
-    border-radius: 12px;
-    background: #292d35;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
+.primary{
+    background:#e2b52d;
+    color:#111;
+    font-weight:bold;
 }
 
-.button:hover {
-    background: #383d47;
+.secondary{
+    background:#292e35;
+    color:white;
 }
 
-.results {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+button:active{
+    transform:scale(.98);
 }
 
-.item {
-    background: #1b1e24;
-    border: 1px solid #30343c;
-    border-radius: 14px;
-    padding: 18px;
+.chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
 }
 
-.item h3 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 20px;
+.chip{
+    background:#252a31;
+    border:1px solid #444;
+    padding:10px 13px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
-.price {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 8px;
+.chip.active{
+    background:#d9ad28;
+    color:#111;
+    border-color:#f1c642;
 }
 
-.info {
-    color: #999;
-    font-size: 14px;
+.item-results{
+    max-height:350px;
+    overflow:auto;
+    margin-top:10px;
 }
 
-.empty {
-    text-align: center;
-    padding: 30px;
-    color: #888;
+.item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:11px;
+    margin:5px 0;
+    background:#20242a;
+    border-radius:10px;
+    cursor:pointer;
 }
 
-footer {
-    text-align: center;
-    color: #666;
-    padding: 30px 15px;
-    font-size: 14px;
+.item:hover{
+    background:#2b3037;
+}
+
+.item img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
+
+.item-name{
+    flex:1;
+}
+
+.small{
+    color:#888;
+    font-size:12px;
+}
+
+.results{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:750px;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #333;
+    text-align:left;
+}
+
+th{
+    color:#f0c23b;
+}
+
+.price{
+    font-weight:bold;
+    color:#72e06a;
+}
+
+.buy{
+    color:#65b8ff;
+}
+
+.no-data{
+    color:#777;
+}
+
+.status{
+    padding:12px;
+    border-radius:10px;
+    background:#20242a;
+    margin:10px 0;
+}
+
+.loading{
+    color:#f0c23b;
+}
+
+.selected{
+    margin-top:12px;
+    padding:12px;
+    background:#252a30;
+    border-radius:10px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+@media(max-width:650px){
+    .row{
+        grid-template-columns:1fr;
+    }
+
+    header h1{
+        font-size:28px;
+    }
+}
+
+.hidden{
+    display:none;
+}
+
+.arrow{
+    font-size:20px;
 }
 </style>
 </head>
@@ -152,207 +239,1290 @@ footer {
 <body>
 
 <header>
-    <h1 class="logo-text">ALBION MARKET</h1>
-    <div class="subtitle">Ceny rynku Albion Online — EU</div>
+    <h1>⚔️ Albion Market EU</h1>
+    <p>Ceny rynku Albion Online • Europe</p>
 </header>
 
 <div class="container">
 
-    <div class="card">
-        <div class="card-header">
-            📁 Kategorie
-        </div>
-
-        <div class="card-body">
-
-            <label for="category">Kategoria</label>
-
-            <select id="category">
-                <option value="all">Wszystkie</option>
-                <option value="weapons">Broń</option>
-                <option value="armor">Zbroje</option>
-                <option value="bags">Torby</option>
-                <option value="capes">Peleryny</option>
-                <option value="resources">Surowce</option>
-                <option value="food">Jedzenie</option>
-                <option value="potions">Mikstury</option>
-            </select>
-
-            <label for="subcategory">Grupa / podkategoria</label>
-
-            <select id="subcategory">
-                <option value="all">Wszystkie</option>
-            </select>
-
-            <label for="search">🔎 Szukaj przedmiotu</label>
-
-            <input
-                type="text"
-                id="search"
-                placeholder="np. Frost Staff, Bag, Cape..."
-            >
-
-            <button class="button" onclick="searchItems()">
-                SZUKAJ
-            </button>
-
-        </div>
+<!-- KATEGORIE -->
+<div class="card">
+    <div class="card-title" onclick="toggleCard('categoryBox')">
+        📁 Kategorie
+        <span class="arrow">▼</span>
     </div>
 
-    <div class="card">
+    <div id="categoryBox" class="card-content">
 
-        <div class="card-header">
-            💰 Wyniki
+        <label>Kategoria</label>
+        <select id="categorySelect" onchange="categoryChanged()">
+            <option value="">Wszystkie</option>
+        </select>
+
+        <label>Grupa / podkategoria</label>
+        <select id="groupSelect" onchange="groupChanged()">
+            <option value="">Wszystkie</option>
+        </select>
+
+    </div>
+</div>
+
+
+<!-- KONKRETNY PRZEDMIOT -->
+<div class="card">
+    <div class="card-title" onclick="toggleCard('itemBox')">
+        🔎 Konkretny model przedmiotu
+        <span class="arrow">▼</span>
+    </div>
+
+    <div id="itemBox" class="card-content">
+
+        <label>Szukaj po nazwie</label>
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="np. Lodowy Kostur, Peleryna Lymhurst, Kapusta..."
+            oninput="searchItems()"
+        >
+
+        <div id="itemResults" class="item-results">
+            <div class="small">
+                Zacznij wpisywać nazwę przedmiotu.
+            </div>
         </div>
 
-        <div class="card-body">
+        <div id="selectedItem" class="selected hidden"></div>
 
-            <div id="results" class="results">
+    </div>
+</div>
 
-                <div class="item">
-                    <h3>Frost Staff</h3>
-                    <div class="price">Brak danych</div>
-                    <div class="info">Cena rynku zostanie tutaj wyświetlona.</div>
-                </div>
 
-                <div class="item">
-                    <h3>Bag</h3>
-                    <div class="price">Brak danych</div>
-                    <div class="info">Cena rynku zostanie tutaj wyświetlona.</div>
-                </div>
+<!-- TIER -->
+<div class="card">
+    <div class="card-title" onclick="toggleCard('tierBox')">
+        ⭐ Tier i enchant
+        <span class="arrow">▼</span>
+    </div>
 
-                <div class="item">
-                    <h3>Cape</h3>
-                    <div class="price">Brak danych</div>
-                    <div class="info">Cena rynku zostanie tutaj wyświetlona.</div>
-                </div>
+    <div id="tierBox" class="card-content">
 
+        <label>Tier</label>
+
+        <div id="tierChips" class="chips">
+            <div class="chip active" data-tier="4" onclick="toggleTier(this)">T4</div>
+            <div class="chip active" data-tier="5" onclick="toggleTier(this)">T5</div>
+            <div class="chip active" data-tier="6" onclick="toggleTier(this)">T6</div>
+            <div class="chip active" data-tier="7" onclick="toggleTier(this)">T7</div>
+            <div class="chip active" data-tier="8" onclick="toggleTier(this)">T8</div>
+        </div>
+
+        <label>Enchant</label>
+
+        <div id="enchantChips" class="chips">
+            <div class="chip active" data-enchant="0" onclick="toggleEnchant(this)">.0</div>
+            <div class="chip" data-enchant="1" onclick="toggleEnchant(this)">.1</div>
+            <div class="chip" data-enchant="2" onclick="toggleEnchant(this)">.2</div>
+            <div class="chip" data-enchant="3" onclick="toggleEnchant(this)">.3</div>
+            <div class="chip" data-enchant="4" onclick="toggleEnchant(this)">.4</div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- MIASTA -->
+<div class="card">
+    <div class="card-title" onclick="toggleCard('cityBox')">
+        🏙️ Miasta
+        <span class="arrow">▼</span>
+    </div>
+
+    <div id="cityBox" class="card-content">
+
+        <div class="chips" id="cityChips">
+
+            <div class="chip active" data-city="Bridgewatch" onclick="toggleCity(this)">
+                Bridgewatch
+            </div>
+
+            <div class="chip active" data-city="Caerleon" onclick="toggleCity(this)">
+                Caerleon
+            </div>
+
+            <div class="chip active" data-city="Fort Sterling" onclick="toggleCity(this)">
+                Fort Sterling
+            </div>
+
+            <div class="chip active" data-city="Lymhurst" onclick="toggleCity(this)">
+                Lymhurst
+            </div>
+
+            <div class="chip active" data-city="Martlock" onclick="toggleCity(this)">
+                Martlock
+            </div>
+
+            <div class="chip active" data-city="Thetford" onclick="toggleCity(this)">
+                Thetford
+            </div>
+
+            <div class="chip active" data-city="Brecilien" onclick="toggleCity(this)">
+                Brecilien
+            </div>
+
+            <div class="chip" data-city="Black Market" onclick="toggleCity(this)">
+                Black Market
             </div>
 
         </div>
+
+    </div>
+</div>
+
+
+<!-- ODŚWIEŻANIE -->
+<div class="card">
+    <div class="card-title" onclick="toggleCard('settingsBox')">
+        ⚙️ Ustawienia
+        <span class="arrow">▼</span>
+    </div>
+
+    <div id="settingsBox" class="card-content">
+
+        <div class="row">
+
+            <div>
+                <label>Automatyczne odświeżanie</label>
+
+                <select id="refreshSelect" onchange="changeRefresh()">
+                    <option value="300">5 minut</option>
+                    <option value="600">10 minut</option>
+                    <option value="900">15 minut</option>
+                    <option value="1800" selected>30 minut</option>
+                    <option value="3600">1 godzina</option>
+                    <option value="7200">2 godziny</option>
+                    <option value="14400">4 godziny</option>
+                    <option value="21600">6 godzin</option>
+                    <option value="43200">12 godzin</option>
+                    <option value="86400">24 godziny</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Historia rynku</label>
+
+                <select id="historySelect">
+                    <option value="0">Tylko teraz</option>
+                    <option value="1">Ostatnia 1 godzina</option>
+                    <option value="3">Ostatnie 3 godziny</option>
+                    <option value="6">Ostatnie 6 godzin</option>
+                    <option value="12">Ostatnie 12 godzin</option>
+                    <option value="24">Ostatnie 24 godziny</option>
+                </select>
+            </div>
+
+        </div>
+
+        <br>
+
+        <button class="primary" onclick="loadMarket()">
+            🔄 POBIERZ CENY TERAZ
+        </button>
+
+        <div id="status" class="status">
+            Gotowe.
+        </div>
+
+    </div>
+</div>
+
+
+<!-- WYNIKI -->
+<div class="card">
+
+    <div class="card-title">
+        📊 Wyniki
+    </div>
+
+    <div class="card-content">
+
+        <div id="results" class="results">
+            Wybierz konkretny przedmiot.
+        </div>
+
     </div>
 
 </div>
 
-<footer>
-    Albion Market EU © 2026
-</footer>
+</div>
+
 
 <script>
 
-const subcategories = {
+const API = "https://europe.albion-online-data.com";
 
-    all: ["Wszystkie"],
+const ITEMS_URL =
+"https://raw.githubusercontent.com/ao-data/ao-bin-dumps/master/formatted/items.json";
 
-    weapons: [
-        "Wszystkie",
-        "Frost Staff",
-        "Fire Staff",
-        "Bow",
-        "Crossbow",
-        "Sword",
-        "Axe",
-        "Spear",
-        "Dagger"
-    ],
+let allItems = [];
+let filteredItems = [];
 
-    armor: [
-        "Wszystkie",
-        "Cloth",
-        "Leather",
-        "Plate"
-    ],
+let selectedItem = null;
 
-    bags: [
-        "Wszystkie",
-        "Bag",
-        "Satchel"
-    ],
+let selectedTiers = [4,5,6,7,8];
+let selectedEnchants = [0];
 
-    capes: [
-        "Wszystkie",
-        "Cape",
-        "Faction Cape"
-    ],
+let selectedCities = [
+    "Bridgewatch",
+    "Caerleon",
+    "Fort Sterling",
+    "Lymhurst",
+    "Martlock",
+    "Thetford",
+    "Brecilien"
+];
 
-    resources: [
-        "Wszystkie",
-        "Ore",
-        "Wood",
-        "Fiber",
-        "Hide",
-        "Stone"
-    ],
+let refreshTimer = null;
 
-    food: [
-        "Wszystkie",
-        "Meat",
-        "Fish",
-        "Vegetables"
-    ],
 
-    potions: [
-        "Wszystkie",
-        "Healing Potion",
-        "Energy Potion",
-        "Resistance Potion"
-    ]
-};
+/* =========================
+   KARTY
+========================= */
 
-const category = document.getElementById("category");
-const subcategory = document.getElementById("subcategory");
+function toggleCard(id){
 
-category.addEventListener("change", function() {
+    const box = document.getElementById(id);
 
-    const selected = category.value;
+    box.classList.toggle("hidden");
+}
 
-    subcategory.innerHTML = "";
 
-    subcategories[selected].forEach(function(name) {
+/* =========================
+   ŁADOWANIE BAZY
+========================= */
 
-        const option = document.createElement("option");
+async function loadItems(){
 
-        option.value = name;
-        option.textContent = name;
+    setStatus("Pobieram aktualną bazę przedmiotów Albion...");
 
-        subcategory.appendChild(option);
+    try{
 
+        const response = await fetch(ITEMS_URL);
+
+        if(!response.ok){
+            throw new Error("Nie udało się pobrać bazy.");
+        }
+
+        const data = await response.json();
+
+        allItems = Array.isArray(data)
+            ? data
+            : Object.values(data);
+
+        allItems = allItems.filter(x =>
+            x &&
+            x.UniqueName &&
+            x.LocalizedNames
+        );
+
+        buildCategories();
+
+        setStatus(
+            "Baza załadowana: " +
+            allItems.length.toLocaleString("pl-PL") +
+            " pozycji."
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        setStatus(
+            "Nie udało się pobrać bazy przedmiotów. " +
+            "Sprawdź połączenie z internetem."
+        );
+    }
+}
+
+
+/* =========================
+   NAZWA
+========================= */
+
+function getName(item){
+
+    if(!item) return "";
+
+    const names = item.LocalizedNames || {};
+
+    return (
+        names["PL-PL"] ||
+        names["EN-US"] ||
+        names["DE-DE"] ||
+        item.UniqueName
+    );
+}
+
+
+/* =========================
+   KATEGORIE
+========================= */
+
+function getCategory(item){
+
+    const id = item.UniqueName || "";
+
+    if(
+        id.includes("_WOOD") ||
+        id.includes("_ORE") ||
+        id.includes("_ROCK") ||
+        id.includes("_FIBER") ||
+        id.includes("_HIDE")
+    ){
+        return "Surowce";
+    }
+
+    if(
+        id.includes("FARM") ||
+        id.includes("SEED") ||
+        id.includes("PLANT") ||
+        id.includes("CROP")
+    ){
+        return "Rolnictwo / wyspy";
+    }
+
+    if(
+        id.includes("FOOD") ||
+        id.includes("MEAL") ||
+        id.includes("DISH") ||
+        id.includes("STEW") ||
+        id.includes("SOUP") ||
+        id.includes("OMELET") ||
+        id.includes("PIE") ||
+        id.includes("SALAD") ||
+        id.includes("ROAST")
+    ){
+        return "Jedzenie";
+    }
+
+    if(
+        id.includes("POTION") ||
+        id.includes("REAGENT")
+    ){
+        return "Mikstury";
+    }
+
+    if(
+        id.includes("CAPE") ||
+        id.includes("CLOAK")
+    ){
+        return "Peleryny";
+    }
+
+    if(
+        id.includes("BAG")
+    ){
+        return "Plecaki";
+    }
+
+    if(
+        id.includes("SHOES") ||
+        id.includes("BOOTS")
+    ){
+        return "Buty";
+    }
+
+    if(
+        id.includes("ARMOR") ||
+        id.includes("LEATHER_SET") ||
+        id.includes("CLOTH_SET") ||
+        id.includes("PLATE_SET")
+    ){
+        return "Zbroje";
+    }
+
+    if(
+        id.includes("HEAD") ||
+        id.includes("HELMET")
+    ){
+        return "Hełmy";
+    }
+
+    if(
+        id.includes("WEAPON") ||
+        id.includes("SWORD") ||
+        id.includes("AXE") ||
+        id.includes("BOW") ||
+        id.includes("CROSSBOW") ||
+        id.includes("STAFF") ||
+        id.includes("MACE") ||
+        id.includes("HAMMER") ||
+        id.includes("SPEAR") ||
+        id.includes("DAGGER") ||
+        id.includes("FIRE") ||
+        id.includes("FROST") ||
+        id.includes("HOLY") ||
+        id.includes("ARCANE") ||
+        id.includes("NATURE")
+    ){
+        return "Bronie";
+    }
+
+    if(
+        id.includes("SHIELD")
+    ){
+        return "Tarcze";
+    }
+
+    if(
+        id.includes("MOUNT") ||
+        id.includes("HORSE") ||
+        id.includes("OX") ||
+        id.includes("DONKEY") ||
+        id.includes("BEAR") ||
+        id.includes("WOLF")
+    ){
+        return "Wierzchowce";
+    }
+
+    if(
+        id.includes("JOURNAL")
+    ){
+        return "Dzienniki";
+    }
+
+    if(
+        id.includes("TROPHY")
+    ){
+        return "Trofea";
+    }
+
+    if(
+        id.includes("FURNITURE")
+    ){
+        return "Meble";
+    }
+
+    if(
+        id.includes("TOKEN") ||
+        id.includes("INSIGNIA")
+    ){
+        return "Znaczniki / insygnia";
+    }
+
+    return "Inne";
+}
+
+
+/* =========================
+   PODGRUPA
+========================= */
+
+function getGroup(item){
+
+    const id = item.UniqueName || "";
+
+    let clean = id;
+
+    clean = clean
+        .replace(/^T[1-8]_/, "")
+        .replace(/@\d+$/, "");
+
+    const parts = clean.split("_");
+
+    if(parts.length >= 2){
+        return parts.slice(0,2).join(" ");
+    }
+
+    return parts[0] || "Inne";
+}
+
+
+/* =========================
+   KATEGORIE SELECT
+========================= */
+
+function buildCategories(){
+
+    const select =
+        document.getElementById("categorySelect");
+
+    const categories =
+        [...new Set(allItems.map(getCategory))]
+        .sort((a,b)=>a.localeCompare(b,"pl"));
+
+    select.innerHTML =
+        `<option value="">Wszystkie</option>`;
+
+    categories.forEach(category=>{
+
+        const option =
+            document.createElement("option");
+
+        option.value = category;
+        option.textContent = category;
+
+        select.appendChild(option);
     });
 
-});
+    updateGroups();
+}
 
-function searchItems() {
 
-    const search = document
-        .getElementById("search")
+/* =========================
+   GRUPY
+========================= */
+
+function updateGroups(){
+
+    const category =
+        document.getElementById("categorySelect").value;
+
+    const select =
+        document.getElementById("groupSelect");
+
+    let items = allItems;
+
+    if(category){
+        items =
+            items.filter(x => getCategory(x) === category);
+    }
+
+    const groups =
+        [...new Set(items.map(getGroup))]
+        .sort((a,b)=>a.localeCompare(b,"pl"));
+
+    select.innerHTML =
+        `<option value="">Wszystkie</option>`;
+
+    groups.forEach(group=>{
+
+        const option =
+            document.createElement("option");
+
+        option.value = group;
+        option.textContent = group;
+
+        select.appendChild(option);
+    });
+}
+
+
+function categoryChanged(){
+
+    updateGroups();
+
+    searchItems();
+}
+
+
+function groupChanged(){
+
+    searchItems();
+}
+
+
+/* =========================
+   WYSZUKIWANIE
+========================= */
+
+function searchItems(){
+
+    const search =
+        document.getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
 
-    const results = document.getElementById("results");
+    const category =
+        document.getElementById("categorySelect").value;
 
-    if (search === "") {
+    const group =
+        document.getElementById("groupSelect").value;
 
-        results.innerHTML = `
-            <div class="empty">
-                Wpisz nazwę przedmiotu, aby rozpocząć wyszukiwanie.
-            </div>
-        `;
+    filteredItems =
+        allItems.filter(item=>{
+
+            const name =
+                getName(item).toLowerCase();
+
+            const id =
+                item.UniqueName.toLowerCase();
+
+            const okSearch =
+                !search ||
+                name.includes(search) ||
+                id.includes(search);
+
+            const okCategory =
+                !category ||
+                getCategory(item) === category;
+
+            const okGroup =
+                !group ||
+                getGroup(item) === group;
+
+            return okSearch &&
+                   okCategory &&
+                   okGroup;
+        });
+
+    filteredItems =
+        filteredItems.slice(0,100);
+
+    renderItemResults();
+}
+
+
+/* =========================
+   LISTA PRZEDMIOTÓW
+========================= */
+
+function renderItemResults(){
+
+    const box =
+        document.getElementById("itemResults");
+
+    if(!filteredItems.length){
+
+        box.innerHTML =
+            `<div class="small">
+                Brak wyników.
+            </div>`;
 
         return;
     }
 
-    results.innerHTML = `
-        <div class="item">
-            <h3>${search}</h3>
-            <div class="price">Brak danych</div>
-            <div class="info">
-                Przedmiot znaleziony. Tutaj później możemy podłączyć
-                aktualne ceny rynku Albion Online.
-            </div>
+    box.innerHTML =
+        filteredItems.map(item=>{
+
+            const name = getName(item);
+
+            const icon =
+                `https://render.albiononline.com/v1/item/${encodeURIComponent(item.UniqueName)}.png?size=60`;
+
+            return `
+                <div
+                    class="item"
+                    onclick='selectItem(${JSON.stringify(item.UniqueName)})'
+                >
+
+                    <img src="${icon}" loading="lazy">
+
+                    <div class="item-name">
+                        <b>${escapeHtml(name)}</b>
+
+                        <div class="small">
+                            ${escapeHtml(item.UniqueName)}
+                        </div>
+                    </div>
+
+                </div>
+            `;
+
+        }).join("");
+}
+
+
+/* =========================
+   WYBÓR PRZEDMIOTU
+========================= */
+
+function selectItem(uniqueName){
+
+    selectedItem =
+        allItems.find(
+            x => x.UniqueName === uniqueName
+        );
+
+    if(!selectedItem) return;
+
+    const box =
+        document.getElementById("selectedItem");
+
+    box.classList.remove("hidden");
+
+    box.innerHTML = `
+        <b>Wybrano:</b>
+        ${escapeHtml(getName(selectedItem))}
+        <div class="small">
+            ${escapeHtml(selectedItem.UniqueName)}
         </div>
     `;
+
+    loadMarket();
 }
+
+
+/* =========================
+   TIER
+========================= */
+
+function toggleTier(el){
+
+    const tier =
+        Number(el.dataset.tier);
+
+    if(selectedTiers.includes(tier)){
+
+        selectedTiers =
+            selectedTiers.filter(x=>x!==tier);
+
+        el.classList.remove("active");
+
+    }else{
+
+        selectedTiers.push(tier);
+
+        el.classList.add("active");
+    }
+}
+
+
+/* =========================
+   ENCHANT
+========================= */
+
+function toggleEnchant(el){
+
+    const enchant =
+        Number(el.dataset.enchant);
+
+    if(selectedEnchants.includes(enchant)){
+
+        selectedEnchants =
+            selectedEnchants.filter(x=>x!==enchant);
+
+        el.classList.remove("active");
+
+    }else{
+
+        selectedEnchants.push(enchant);
+
+        el.classList.add("active");
+    }
+}
+
+
+/* =========================
+   MIASTA
+========================= */
+
+function toggleCity(el){
+
+    const city =
+        el.dataset.city;
+
+    if(selectedCities.includes(city)){
+
+        selectedCities =
+            selectedCities.filter(x=>x!==city);
+
+        el.classList.remove("active");
+
+    }else{
+
+        selectedCities.push(city);
+
+        el.classList.add("active");
+    }
+}
+
+
+/* =========================
+   ID DLA TIER/ENCHANT
+========================= */
+
+function buildItemIds(){
+
+    if(!selectedItem){
+        return [];
+    }
+
+    const base =
+        selectedItem.UniqueName;
+
+    const ids = [];
+
+    selectedTiers.forEach(tier=>{
+
+        let id =
+            base.replace(/^T[1-8]_/,`T${tier}_`);
+
+        selectedEnchants.forEach(enchant=>{
+
+            if(enchant === 0){
+
+                ids.push(id);
+
+            }else{
+
+                ids.push(
+                    id + "@" + enchant
+                );
+
+            }
+
+        });
+
+    });
+
+    return [...new Set(ids)];
+}
+
+
+/* =========================
+   API
+========================= */
+
+async function loadMarket(){
+
+    if(!selectedItem){
+
+        setStatus(
+            "Najpierw wybierz konkretny przedmiot."
+        );
+
+        return;
+    }
+
+    if(!selectedCities.length){
+
+        setStatus(
+            "Wybierz przynajmniej jedno miasto."
+        );
+
+        return;
+    }
+
+    const ids =
+        buildItemIds();
+
+    if(!ids.length){
+
+        setStatus(
+            "Wybierz przynajmniej jeden Tier i enchant."
+        );
+
+        return;
+    }
+
+    setStatus(
+        "Pobieram aktualne ceny rynku..."
+    );
+
+    document.getElementById("results").innerHTML =
+        `<div class="loading">
+            ⏳ Pobieranie danych...
+        </div>`;
+
+    try{
+
+        const url =
+            API +
+            "/api/v2/stats/prices/" +
+            ids.map(encodeURIComponent).join(",") +
+            ".json?locations=" +
+            encodeURIComponent(selectedCities.join(",")) +
+            "&qualities=1,2,3,4,5";
+
+        const response =
+            await fetch(url);
+
+        if(!response.ok){
+            throw new Error("API error");
+        }
+
+        const data =
+            await response.json();
+
+        renderPrices(data);
+
+        setStatus(
+            "Ostatnie pobranie: " +
+            new Date().toLocaleString("pl-PL")
+        );
+
+        loadHistory(ids);
+
+    }catch(error){
+
+        console.error(error);
+
+        setStatus(
+            "Błąd pobierania danych z Albion Data Project."
+        );
+
+        document.getElementById("results").innerHTML =
+            `<div class="no-data">
+                Nie udało się pobrać cen.
+            </div>`;
+    }
+}
+
+
+/* =========================
+   WYNIKI CEN
+========================= */
+
+function renderPrices(data){
+
+    if(!data || !data.length){
+
+        document.getElementById("results").innerHTML =
+            `<div class="no-data">
+                Brak danych dla wybranych przedmiotów i miast.
+            </div>`;
+
+        return;
+    }
+
+    let html = `
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Przedmiot</th>
+                    <th>Miasto</th>
+                    <th>Jakość</th>
+                    <th>Najtańsza sprzedaż</th>
+                    <th>Najlepszy skup</th>
+                    <th>Aktualizacja</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+    `;
+
+    data.forEach(row=>{
+
+        const sell =
+            Number(row.sell_price_min || 0);
+
+        const buy =
+            Number(row.buy_price_max || 0);
+
+        const date =
+            row.sell_price_min_date ||
+            row.buy_price_max_date;
+
+        html += `
+            <tr>
+
+                <td>
+                    <b>${escapeHtml(row.item_id)}</b>
+                </td>
+
+                <td>
+                    ${escapeHtml(row.city)}
+                </td>
+
+                <td>
+                    ${row.quality}
+                </td>
+
+                <td class="price">
+                    ${sell > 0
+                        ? formatSilver(sell)
+                        : "—"}
+                </td>
+
+                <td class="buy">
+                    ${buy > 0
+                        ? formatSilver(buy)
+                        : "—"}
+                </td>
+
+                <td>
+                    ${date
+                        ? formatDate(date)
+                        : "brak"}
+                </td>
+
+            </tr>
+        `;
+    });
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+    document.getElementById("results").innerHTML =
+        html;
+}
+
+
+/* =========================
+   HISTORIA
+========================= */
+
+async function loadHistory(ids){
+
+    const hours =
+        Number(
+            document.getElementById("historySelect").value
+        );
+
+    if(!hours){
+        return;
+    }
+
+    const now =
+        new Date();
+
+    const start =
+        new Date(
+            now.getTime() -
+            hours * 60 * 60 * 1000
+        );
+
+    const date =
+        formatApiDate(start);
+
+    const endDate =
+        formatApiDate(now);
+
+    try{
+
+        const url =
+            API +
+            "/api/v2/stats/history/" +
+            ids.map(encodeURIComponent).join(",") +
+            ".json?date=" +
+            date +
+            "&end_date=" +
+            endDate +
+            "&locations=" +
+            encodeURIComponent(selectedCities.join(",")) +
+            "&time-scale=1";
+
+        const response =
+            await fetch(url);
+
+        if(!response.ok){
+            return;
+        }
+
+        const data =
+            await response.json();
+
+        renderHistory(data);
+
+    }catch(error){
+
+        console.log(
+            "Historia niedostępna",
+            error
+        );
+    }
+}
+
+
+/* =========================
+   HISTORIA WYNIK
+========================= */
+
+function renderHistory(data){
+
+    if(!data || !data.length){
+        return;
+    }
+
+    let html = `
+        <br>
+
+        <h3>📈 Historia rynku</h3>
+
+        <div class="small">
+            Dane historyczne AODP dotyczą obserwowanych
+            sell orders. Nie oznaczają pewnej liczby
+            zakończonych transakcji.
+        </div>
+
+        <br>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Przedmiot</th>
+                    <th>Miasto</th>
+                    <th>Czas</th>
+                    <th>Ilość</th>
+                    <th>Średnia cena</th>
+                </tr>
+            </thead>
+
+            <tbody>
+    `;
+
+    data.forEach(group=>{
+
+        const rows =
+            group.data || [];
+
+        rows.forEach(row=>{
+
+            html += `
+                <tr>
+
+                    <td>
+                        ${escapeHtml(group.item_id || "")}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(group.location || "")}
+                    </td>
+
+                    <td>
+                        ${formatDate(row.timestamp)}
+                    </td>
+
+                    <td>
+                        ${row.item_count ?? "—"}
+                    </td>
+
+                    <td class="price">
+                        ${row.avg_price
+                            ? formatSilver(row.avg_price)
+                            : "—"}
+                    </td>
+
+                </tr>
+            `;
+
+        });
+
+    });
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+    document.getElementById("results").innerHTML +=
+        html;
+}
+
+
+/* =========================
+   ODŚWIEŻANIE
+========================= */
+
+function changeRefresh(){
+
+    const seconds =
+        Number(
+            document.getElementById("refreshSelect").value
+        );
+
+    if(refreshTimer){
+        clearInterval(refreshTimer);
+    }
+
+    refreshTimer =
+        setInterval(
+            loadMarket,
+            seconds * 1000
+        );
+
+    setStatus(
+        "Automatyczne odświeżanie ustawione na " +
+        formatDuration(seconds)
+    );
+}
+
+
+/* =========================
+   FORMAT
+========================= */
+
+function formatSilver(value){
+
+    return Number(value)
+        .toLocaleString("pl-PL") +
+        " 🪙";
+}
+
+
+function formatDate(value){
+
+    if(!value) return "—";
+
+    const date =
+        new Date(value);
+
+    if(isNaN(date.getTime())){
+        return value;
+    }
+
+    return date.toLocaleString(
+        "pl-PL",
+        {
+            day:"2-digit",
+            month:"2-digit",
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
+}
+
+
+function formatApiDate(date){
+
+    const y =
+        date.getFullYear();
+
+    const m =
+        String(date.getMonth()+1)
+        .padStart(2,"0");
+
+    const d =
+        String(date.getDate())
+        .padStart(2,"0");
+
+    return `${y}-${m}-${d}`;
+}
+
+
+function formatDuration(seconds){
+
+    if(seconds < 3600){
+        return Math.round(seconds/60) + " min";
+    }
+
+    return Math.round(seconds/3600) + " godz.";
+}
+
+
+function setStatus(text){
+
+    document.getElementById("status")
+        .textContent = text;
+}
+
+
+function escapeHtml(text){
+
+    return String(text)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadItems();
+
+changeRefresh();
 
 </script>
 
