@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Albion Market EU</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d0f12;
+    color: #eeeeee;
+}
+
+header {
+    background: #0d0f12;
+    border-bottom: 1px solid #333;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+.logo-text {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.subtitle {
+    margin-top: 8px;
+    color: #999;
+    font-size: 15px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: #17191e;
+    border: 1px solid #292c33;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    border-bottom: 1px solid #30333a;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #aaa;
+    font-size: 16px;
+}
+
+select,
+input {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    border: 1px solid #41444b;
+    background: #202329;
+    color: white;
+    font-size: 16px;
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    border-color: #777;
+}
+
+.button {
+    width: 100%;
+    padding: 16px;
+    border: 0;
+    border-radius: 12px;
+    background: #292d35;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #383d47;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.item {
+    background: #1b1e24;
+    border: 1px solid #30343c;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.item h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.info {
+    color: #999;
+    font-size: 14px;
+}
+
+.empty {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+}
+
+footer {
+    text-align: center;
+    color: #666;
+    padding: 30px 15px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1 class="logo-text">ALBION MARKET</h1>
+    <div class="subtitle">Ceny rynku Albion Online — EU</div>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            📁 Kategorie
+        </div>
+
+        <div class="card-body">
+
+            <label for="category">Kategoria</label>
+
+            <select id="category">
+                <option value="all">Wszystkie</option>
+                <option value="weapons">Broń</option>
+                <option value="armor">Zbroje</option>
+                <option value="bags">Torby</option>
+                <option value="capes">Peleryny</option>
+                <option value="resources">Surowce</option>
+                <option value="food">Jedzenie</option>
+                <option value="potions">Mikstury</option>
+            </select>
+
+            <label for="subcategory">Grupa / podkategoria</label>
+
+            <select id="subcategory">
+                <option value="all">Wszystkie</option>
+            </select>
+
+            <label for="search">🔎 Szukaj przedmiotu</label>
+
+            <input
+                type="text"
+                id="search"
+                placeholder="np. Frost Staff, Bag, Cape..."
+            >
+
+            <button class="button" onclick="searchItems()">
+                SZUKAJ
+            </button>
+
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header">
+            💰 Wyniki
+        </div>
+
+        <div class="card-body">
+
+            <div id="results" class="results">
+
+                <div class="item">
+                    <h3>Frost Staff</h3>
+                    <div class="price">Brak danych</div>
+                    <div class="info">Cena rynku zostanie tutaj wyświetlona.</div>
+                </div>
+
+                <div class="item">
+                    <h3>Bag</h3>
+                    <div class="price">Brak danych</div>
+                    <div class="info">Cena rynku zostanie tutaj wyświetlona.</div>
+                </div>
+
+                <div class="item">
+                    <h3>Cape</h3>
+                    <div class="price">Brak danych</div>
+                    <div class="info">Cena rynku zostanie tutaj wyświetlona.</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    Albion Market EU © 2026
+</footer>
+
+<script>
+
+const subcategories = {
+
+    all: ["Wszystkie"],
+
+    weapons: [
+        "Wszystkie",
+        "Frost Staff",
+        "Fire Staff",
+        "Bow",
+        "Crossbow",
+        "Sword",
+        "Axe",
+        "Spear",
+        "Dagger"
+    ],
+
+    armor: [
+        "Wszystkie",
+        "Cloth",
+        "Leather",
+        "Plate"
+    ],
+
+    bags: [
+        "Wszystkie",
+        "Bag",
+        "Satchel"
+    ],
+
+    capes: [
+        "Wszystkie",
+        "Cape",
+        "Faction Cape"
+    ],
+
+    resources: [
+        "Wszystkie",
+        "Ore",
+        "Wood",
+        "Fiber",
+        "Hide",
+        "Stone"
+    ],
+
+    food: [
+        "Wszystkie",
+        "Meat",
+        "Fish",
+        "Vegetables"
+    ],
+
+    potions: [
+        "Wszystkie",
+        "Healing Potion",
+        "Energy Potion",
+        "Resistance Potion"
+    ]
+};
+
+const category = document.getElementById("category");
+const subcategory = document.getElementById("subcategory");
+
+category.addEventListener("change", function() {
+
+    const selected = category.value;
+
+    subcategory.innerHTML = "";
+
+    subcategories[selected].forEach(function(name) {
+
+        const option = document.createElement("option");
+
+        option.value = name;
+        option.textContent = name;
+
+        subcategory.appendChild(option);
+
+    });
+
+});
+
+function searchItems() {
+
+    const search = document
+        .getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const results = document.getElementById("results");
+
+    if (search === "") {
+
+        results.innerHTML = `
+            <div class="empty">
+                Wpisz nazwę przedmiotu, aby rozpocząć wyszukiwanie.
+            </div>
+        `;
+
+        return;
+    }
+
+    results.innerHTML = `
+        <div class="item">
+            <h3>${search}</h3>
+            <div class="price">Brak danych</div>
+            <div class="info">
+                Przedmiot znaleziony. Tutaj później możemy podłączyć
+                aktualne ceny rynku Albion Online.
+            </div>
+        </div>
+    `;
+}
+
+</script>
+
+</body>
+</html>
